@@ -1,0 +1,79 @@
+
+<h1 align="center"> ☣ XOR.DDoS - "echo" from 2014 ☣ </h1>
+<img title="a title" alt="Alt text" src="https://github.com/fhd342gs/fhd342.github.io/blob/main/XOR.DDoS_title.png">
+
+
+<h1 align="center"> ==Intro== </h1>
+
+Lately I came up upon an article from Microsoft Defender Research Team on XOR.DDOoS. In this article they report a huge spike of 254% in XOR.DDoS attacks. The following reading is the result of some "digging" that, hopefully, will answer questions of what this attack is all about, what are main XOR.DDoS features, main targets and why "the spike", how to detect and how to mitigate this type of attack. 
+==What XOR.DDOoS is all about?==
+
+XOR.DDoS is a botnet malware with rootkit capabilities that uses XOR encryption for communication with C2 (Command-&-Control) server. Malware targets Linux operated assets. This one is a very stealthy, persistent and evasive piece of malware. It successfully evades rule-based detection, hash-based malicious file lookup and mitigates process-tree based analysis.
+
+First, XOR.DDoS trojan was reported back in 2014 by the group MalwareMustDie!. 
+
+Next illustrates the typical 'life cycle' of XORDDoS malware:
+<img title="a title" alt="Alt text" src="https://github.com/fhd342gs/fhd342.github.io/blob/main/xorddos_mindmap.png">
+
+
+As we can see from the mind map above, attacker scans the Internet in order to find internet-facing assets with SSH ports open. After, BotNet is used to launch brute-force attacks against open SSH ports in order to guess weak admin/root password. If successful, XORDDoS trojan will be installed on the target using root credentials. After, malware persists throughout the targeted system using different evasive mechanisms, establishes encrypted communication channel with C2 server, carries out DDoS attacks or acts as disguise for other malicious activities.
+<h1 align="center"> ==Targets== </h1>
+
+Variety of Linux system architectures (ARM, x86_32, AMD64)
+Main targets are "legion" of IoT devices, misconfigured Docker clusters, any other systems operating on Linux and "sticking" its opened SSH port into the wild.
+
+<h1 align="center"> ==Features of XOR.DDoS== </h1>
+
+### _Multiple persistence vectors:_
+
+- init script in /etc/init.dinit script in /etc/init.d - starts trojan on system startup
+- creates crontab job - spawns malicious process every given amount of time
+- abuses system runlevels by creating symlinks for dropped script in /etc/init.d in runlevel directories /etc/rc.d/rc[1-5].d and /etc/rc[1-5].d
+- malware ads itself into auto-start services
+
+### _Evasion capabilities:_
+
+- demonisation -  XOR.DDoS trojan demonise itself in order to make it less visible and controllable from user side 
+- XOR encryption - obfuscates data strings
+- process name spoofing - XOR.DDoS trojan "masquerade" itself as legit process by spoofing its name (overwrites sensitive files with a null byte)
+- kernel rootkit - modifies OS data structure in order to hide its presence (this includes process and port hiding)
+
+### _Malicious Activity Threads_
+
+- kill_process - variety of tasks supporting functionality of the trojan
+- tcp_thread - encryption and communication with C2 server
+- daemon_get_killed_process - downloads and decodes kill_cfg data 
+- DDoS thread pool - determines number of processes running on the target then creates threads with twice the number of processors found on the targeted device.
+
+<h1 align="center"> ==Detection== </h1>
+
+- security controls with heuristic and behavioural based analysis
+- NDR with smart! threat_hunter in one package :)
+- heavy monitoring and analysis of attacks against external infrastructure (especially automated password guessing attacks)
+- use of FIM (File Integrity Monitoring) solutions
+
+<h1 align="center"> ==Mitigation tactics== </h1>
+
+The threat itself heavily relies on concept of "low hanging fruit" - the exploitation almost fully depends on presence of  root/admin weak password (we are not taking in consideration Social Engineering here). So the mitigation strategy will be as follows: 
+
+- assets inventory - know exactly how many Linux assets you have in your infra, where they are and how they are configured
+- business need for open SSH ports sticking out into the "wild" should be justified
+- network ACL should be configured per best practicies
+- segregate your IoT devices into separate VLAN
+- use of SSH keys instead of passwords for SSH access
+- in case if for some reason using of SSH keys is not possible - strong password policies should be implemented (well, they always should be implemented :) )
+
+# ==P.S.==
+
+>>>  Consider further reading of information mentioned in the Credits & Reference section. Guys from  MalwareMustDie!, Microsoft Defender Research Team and AVAST Threat intelligence team, did all the heavy lifting and brought up extended technical details and results of their research on XOR.DDoS problem. All "Kudos" go to them!
+
+<h3 align="center"> (◞≼◉ื≽◟ ;益;◞≼◉ื≽◟) </h3>
+
+## *_Credits & References:_*
+1. Microsoft Defender Research Team - _["Rise in XorDdos: A deeper look at the stealthy DDoS malware targeting Linux devices"](https://www.microsoft.com/security/blog/2022/05/19/rise-in-xorddos-a-deeper-look-at-the-stealthy-ddos-malware-targeting-linux-devices/#Persistence_mechanisms)_
+2. AVAST Threat intelligence team - _["Linux DDoS Trojan hiding itself with an embedded rootkit"](https://blog.avast.com/2015/01/06/linux-ddos-trojan-hiding-itself-with-an-embedded-rootkit/)_
+3. The MalwareMustDie Blog - _["MMD-0028-2014 - Linux/XOR.DDoS : Fuzzy reversing a new China ELF"](https://blog.malwaremustdie.org/2014/09/mmd-0028-2014-fuzzy-reversing-new-china.html)_
+ 
+ <h3 align="center"> (◞≼◉ื≽◟ ;益;◞≼◉ื≽◟) </h3>
+ 
+<h1 align="center"> ╚»★«╝ Remain calm and be vigilant! ╚»★«╝ </h1>

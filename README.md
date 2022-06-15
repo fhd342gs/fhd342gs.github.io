@@ -1,1 +1,2 @@
-# fhd342gs.github.io
+# fhd342.github.io
+blog
