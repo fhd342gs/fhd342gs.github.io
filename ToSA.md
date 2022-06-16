@@ -1,15 +1,22 @@
 <h1 align="center"> 〄 Types of Security Assements 〄 </h1>
-So many times I encounter situations, where the understanding of differensies between Vulnerability Assessment & Penetration Testing is blured, leading to not optimal decision making and creating additional obsticles for offensive team to deliver expected result.
-This blog and mindmap is, in fact, an attempt to explain purposes and differencies of security assessments types, make things more visual and explanatory.  
-Hopefully this affort will:
+
+So many times, I encounter situations, where the understanding of differences between Vulnerability Assessment & Penetration Testing is blurred, leading to not optimal decision making and creating additional obstacles for offensive team to deliver expected result.
+This blog and mind map is, in fact, an attempt to explain purposes and differences of security assessment types, make things more visual and explanatory.  
+Hopefully this effort will:
 
   - Shed additional light at the problem
-  - Help clients to make a disicion that fit your organisation needs
+  - Help clients to make a decision that fit your organization needs
   - Help sales teams to sharpen their strategy
+
+<h3 align="center"> (◞≼◉ื≽◟ ;益;◞≼◉ื≽◟) </h3>
 
 <h1 align="center"> ===== </h1>
 
 <img title="a title" alt="Alt text" src="https://github.com/fhd342gs/fhd342gs.github.io/blob/main/toSA.png">
 
 <h1 align="center"> ===== </h1>
+
+<h3 align="center"> (◞≼◉ื≽◟ ;益;◞≼◉ื≽◟) </h3>
+ 
+<h1 align="center"> ╚»★«╝ Remain calm and be vigilant! ╚»★«╝ </h1>
 
