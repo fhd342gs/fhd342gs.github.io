@@ -18,8 +18,7 @@ Hopefully this effort will:
 
 <h1 align="center"> ===== </h1>
 
-![GSD1 phenotype]({{ BASE_PATH }}/_images/ToSA/toSA.png)
-
+![Expression]({{ "_images/ToSA/toSA.png" | relative_url }})
 <imgsrc="{{ site.baseurl }}_images/ToSA/toSA.png">
 
 <h1 align="center"> ===== </h1>
