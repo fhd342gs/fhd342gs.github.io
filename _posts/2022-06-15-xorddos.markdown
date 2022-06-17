@@ -5,7 +5,7 @@ date:   2022-06-17 12:30:00 -0400
 categories: Posts
 ---
 <h1 align="center"> ☣ XOR.DDoS - "echo" from 2014 ☣ </h1>
-<img title="a title" alt="Alt text" src="https://github.com/fhd342gs/fhd342gs.github.io/blob/main/XOR.DDoS_title.png">
+<img title="a title" alt="Alt text" src="https://github.com/fhd342gs/fhd342gs.github.io/blob/main/_images/XOR.DDoS/XOR.DDoS_title.png">
 
 
 <h1 align="center"> ==Intro== </h1>
@@ -18,7 +18,7 @@ XOR.DDoS is a botnet malware with rootkit capabilities that uses XOR encryption 
 First, XOR.DDoS trojan was reported back in 2014 by the group MalwareMustDie!. 
 
 Next illustrates the typical 'life cycle' of XORDDoS malware:
-<img title="a title" alt="Alt text" src="https://github.com/fhd342gs/fhd342gs.github.io/blob/main/xorddos_mindmap.png">
+<img title="a title" alt="Alt text" src="https://github.com/fhd342gs/fhd342gs.github.io/blob/main/_images/XOR.DDoS/xorddos_mindmap.png">
 
 
 As we can see from the mind map above, attacker scans the Internet in order to find internet-facing assets with SSH ports open. After, BotNet is used to launch brute-force attacks against open SSH ports in order to guess weak admin/root password. If successful, XORDDoS trojan will be installed on the target using root credentials. After, malware persists throughout the targeted system using different evasive mechanisms, establishes encrypted communication channel with C2 server, carries out DDoS attacks or acts as disguise for other malicious activities.
