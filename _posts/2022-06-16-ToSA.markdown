@@ -18,10 +18,7 @@ Hopefully this effort will:
 
 <h1 align="center"> ===== </h1>
 
-![Expression]({{ "/_images/ToSA/toSA.png" | relative_url }})
-
-
-<imgsrc="{{ site.baseurl }}_images/ToSA/toSA.png">
+<img src="https://github.com/fhd342gs/fhd342gs.github.io/blob/7a315d63a0d7658be2f7e82533fe6c75eb2a91d0/_images/ToSA/toSA.png">
 
 <h1 align="center"> ===== </h1>
 
