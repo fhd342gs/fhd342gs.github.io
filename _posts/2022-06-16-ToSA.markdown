@@ -18,7 +18,7 @@ Hopefully this effort will:
 
 <h1 align="center"> ===== </h1>
 
-<img src="{{ site.baseurl }}/main/_images/ToSA/toSA.png">
+<img src="{{ site.baseurl }}_images/ToSA/toSA.png">
 
 <h1 align="center"> ===== </h1>
 
