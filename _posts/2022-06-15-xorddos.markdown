@@ -1,6 +1,6 @@
 ---
 layout: _posts
-title:  "XOR.DDoS - "echo" from 2014"
+title:  "XOR.DDoS - echo from 2014"
 date:   2022-06-17 12:30:00 -0400
 categories: Posts
 ---
