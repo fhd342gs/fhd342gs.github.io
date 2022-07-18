@@ -21,9 +21,7 @@ Let’s take a close look at life cycle of this trojan:
 
 <h1 align="center"> ===== </h1>
 
-![ZOORaT_transp.png](/assets/img/ZOORaT_transp.png)
-
-<!-- <img align="center" src="https://github.com/fhd342gs/fhd342gs.github.io/blob/c32f6e9ebee2651e0f58f9be27f044cb0172bf85/assets/img/xorddos_mindmap.png"> -->
+![ZOORaT_transp.png](/assets/img/ZOORaT_transp.png?style=centerme)
 
 <h1 align="center"> ===== </h1>
   
