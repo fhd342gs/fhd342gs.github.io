@@ -9,7 +9,7 @@ tag:
   - China
 ---
 
-![ZOORaT_logo.png](/assets/img/ZOORaT_logo.png?style=centerme)
+![ZOORaT_logo.png](/assets/img/ZOORaT_logo.png?style=centerme){:style="display:block; margin-left:auto; margin-right:auto"}
 
 <h1 align="center"> ⟴ SOHO routers hijacking ⬲ </h1>
 
