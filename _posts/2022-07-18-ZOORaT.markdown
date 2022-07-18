@@ -8,8 +8,7 @@ tag:
   - trojan
   - China
 ---
-
-![ZOORaT_logo.png](/assets/img/ZOORaT_logo.png)
+<div style="text-align:center"><"![ZOORaT_logo.png](/assets/img/ZOORaT_logo.png)"/></div>
 
 <h1 align="center"> ⟴ SOHO routers hijacking ⬲ </h1>
 
