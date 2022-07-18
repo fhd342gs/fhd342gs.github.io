@@ -22,7 +22,9 @@ Let’s take a close look at life cycle of this trojan:
 <h1 align="center"> ===== </h1>
 
 {:refdef: style="text-align: center;"}
-![ZOORaT_transp.png](/assets/img/ZOORaT_transp.png?style=centerme)
+
+  ![ZOORaT_transp.png](/assets/img/ZOORaT_transp.png?style=centerme)
+
 {: refdef}
 
 <h1 align="center"> ===== </h1>
