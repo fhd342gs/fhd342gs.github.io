@@ -1,0 +1,68 @@
+---
+layout: post
+title:  "ZOORaT trojan"
+date:   2022-07-18 12:30:00 -0400
+categories: Posts
+tag: 
+  - malware
+  - trojan
+  - China
+---
+
+```
+ZZZZZZZZZZZZZZZZZZZ     OOOOOOOOO          OOOOOOOOO     RRRRRRRRRRRRRRRRR                  TTTTTTTTTTTTTTTTTTTTTTT
+Z:::::::::::::::::Z   OO:::::::::OO      OO:::::::::OO   R::::::::::::::::R                 T:::::::::::::::::::::T
+Z:::::::::::::::::Z OO:::::::::::::OO  OO:::::::::::::OO R::::::RRRRRR:::::R                T:::::::::::::::::::::T
+Z:::ZZZZZZZZ:::::Z O:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::R               T:::::TT:::::::TT:::::T
+ZZZZZ     Z:::::Z  O::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::R  aaaaaaaaaaaaaTTTTTT  T:::::T  TTTTTT
+        Z:::::Z    O:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  a::::::::::::a       T:::::T        
+       Z:::::Z     O:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R   aaaaaaaaa:::::a      T:::::T        
+      Z:::::Z      O:::::O     O:::::OO:::::O     O:::::O  R:::::::::::::RR             a::::a      T:::::T        
+     Z:::::Z       O:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R     aaaaaaa:::::a      T:::::T        
+    Z:::::Z        O:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  aa::::::::::::a      T:::::T        
+   Z:::::Z         O:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R a::::aaaa::::::a      T:::::T        
+ZZZ:::::Z     ZZZZZO::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::Ra::::a    a:::::a      T:::::T        
+Z::::::ZZZZZZZZ:::ZO:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::Ra::::a    a:::::a    TT:::::::TT      
+Z:::::::::::::::::Z OO:::::::::::::OO  OO:::::::::::::OO R::::::R     R:::::Ra:::::aaaa::::::a    T:::::::::T      
+Z:::::::::::::::::Z   OO:::::::::OO      OO:::::::::OO   R::::::R     R:::::R a::::::::::aa:::a   T:::::::::T      
+ZZZZZZZZZZZZZZZZZZZ     OOOOOOOOO          OOOOOOOOO     RRRRRRRR     RRRRRRR  aaaaaaaaaa  aaaa   TTTTTTTTTTT      
+```
+
+<h1 align="center"> ⟴ SOHO routers hijacking ⬲ </h1>
+
+Recently researchers from [Lumen’s Black Lotus Labs](https://blog.lumen.com/zuorat-hijacks-soho-routers-to-silently-stalk-networks/) published report about new piece of malware originated from China, named __ZOORaT__. 
+
+This remote access Trojan targets Small Office / Home office (SOHO) routers. Considering amount of people working from their home offices - this gives a huge attack surface. Attackers successfully exploit vulnerabilities of SOHO routers, utilizing usual neglect in updating and patching (even when patches exists), default configurations / passwords, and lack / absence of monitoring. 
+
+Let’s take a close look at life cycle of this trojan:
+<p align="center">
+<img title="a title" alt="Alt text" src="https://github.com/fhd342gs/blog_store/blob/main/_images/ZooRaT/ZOORaT_transp.png">
+</p>
+  
+<h2 align="center"> ==Vulnerable devices== </h2>
+
+> ! _Please note that this list may not be full_
+
+Next routers happen to be vulnerable to the ZOORaT attack:
+
+- Netgear
+- JCG
+- CISCO
+- ASUS
+- DrayTek
+
+<h2 align="center"> ==Detection and Mitigation== </h2>
+
+- Use IoCs outlined in [__this repository__](https://github.com/blacklotuslabs/IOCs/blob/main/ZuoRAT_IoCs.txt) to monitor for the Windows loader and its modules, as well as connections to any suspicious infrastructure.
+- Users should follow best practices:
+    - Maintain security updates and patches on their routers
+    - Regular router reboot (simple reboot - removes initial exploit, however for full recover factory reset advised)
+    - Use properly configured and updated EDR solutions
+
+<h3 align="center"> ^v^(;,,;)^v^ </h3>
+
+## _Referencies_
+
+_1. Lumen blog - https://blog.lumen.com/zuorat-hijacks-soho-routers-to-silently-stalk-networks_
+ <h3 align="center"> ^v^(;,,;)^v^ </h3>
+<h1 align="center"> ╚»★«╝ Remain calm and be vigilant! ╚»★«╝ </h1>
