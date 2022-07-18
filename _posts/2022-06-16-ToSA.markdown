@@ -20,7 +20,7 @@ Hopefully this effort will:
 
 ![toSA.png](/assets/img/toSA.png)
 
-<!-- <img src="https://github.com/fhd342gs/fhd342gs.github.io/blob/7a315d63a0d7658be2f7e82533fe6c75eb2a91d0/_images/ToSA/toSA.png"> -->
+<!-- <img align="center" src="https://github.com/fhd342gs/fhd342gs.github.io/blob/7a315d63a0d7658be2f7e82533fe6c75eb2a91d0/_images/ToSA/toSA.png"> -->
 
 <h1 align="center"> ===== </h1>
 
