@@ -13,7 +13,7 @@ tag:
 
 <h1 align="center"> ⟴ SOHO routers hijacking ⬲ </h1>
 
-Recently researchers from [Lumen’s Black Lotus Labs](https://blog.lumen.com/zuorat-hijacks-soho-routers-to-silently-stalk-networks/) published report about new piece of malware originated from China, named __ZOORaT__. 
+Recently researchers from [Lumen’s Black Lotus Labs](https://blog.lumen.com/zuorat-hijacks-soho-routers-to-silently-stalk-networks/) published report about new piece of malware originated from China, named __ZuoRAT__. 
 
 This remote access Trojan targets Small Office / Home office (SOHO) routers. Considering amount of people working from their home offices - this gives a huge attack surface. Attackers successfully exploit vulnerabilities of SOHO routers, utilizing usual neglect in updating and patching (even when patches exists), default configurations / passwords, and lack / absence of monitoring. 
 
