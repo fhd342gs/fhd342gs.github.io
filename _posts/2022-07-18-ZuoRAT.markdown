@@ -29,7 +29,7 @@ Let’s take a close look at life cycle of this trojan:
 
 > ! _Please note that this list may not be full_
 
-Next routers happen to be vulnerable to the ZOORaT attack:
+Next routers happen to be vulnerable to the ZuoRAT trojan:
 
 - Netgear
 - JCG
