@@ -9,24 +9,7 @@ tag:
   - China
 ---
 
-```
-ZZZZZZZZZZZZZZZZZZZ     OOOOOOOOO          OOOOOOOOO     RRRRRRRRRRRRRRRRR                  TTTTTTTTTTTTTTTTTTTTTTT
-Z:::::::::::::::::Z   OO:::::::::OO      OO:::::::::OO   R::::::::::::::::R                 T:::::::::::::::::::::T
-Z:::::::::::::::::Z OO:::::::::::::OO  OO:::::::::::::OO R::::::RRRRRR:::::R                T:::::::::::::::::::::T
-Z:::ZZZZZZZZ:::::Z O:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::R               T:::::TT:::::::TT:::::T
-ZZZZZ     Z:::::Z  O::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::R  aaaaaaaaaaaaaTTTTTT  T:::::T  TTTTTT
-        Z:::::Z    O:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  a::::::::::::a       T:::::T        
-       Z:::::Z     O:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R   aaaaaaaaa:::::a      T:::::T        
-      Z:::::Z      O:::::O     O:::::OO:::::O     O:::::O  R:::::::::::::RR             a::::a      T:::::T        
-     Z:::::Z       O:::::O     O:::::OO:::::O     O:::::O  R::::RRRRRR:::::R     aaaaaaa:::::a      T:::::T        
-    Z:::::Z        O:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R  aa::::::::::::a      T:::::T        
-   Z:::::Z         O:::::O     O:::::OO:::::O     O:::::O  R::::R     R:::::R a::::aaaa::::::a      T:::::T        
-ZZZ:::::Z     ZZZZZO::::::O   O::::::OO::::::O   O::::::O  R::::R     R:::::Ra::::a    a:::::a      T:::::T        
-Z::::::ZZZZZZZZ:::ZO:::::::OOO:::::::OO:::::::OOO:::::::ORR:::::R     R:::::Ra::::a    a:::::a    TT:::::::TT      
-Z:::::::::::::::::Z OO:::::::::::::OO  OO:::::::::::::OO R::::::R     R:::::Ra:::::aaaa::::::a    T:::::::::T      
-Z:::::::::::::::::Z   OO:::::::::OO      OO:::::::::OO   R::::::R     R:::::R a::::::::::aa:::a   T:::::::::T      
-ZZZZZZZZZZZZZZZZZZZ     OOOOOOOOO          OOOOOOOOO     RRRRRRRR     RRRRRRR  aaaaaaaaaa  aaaa   TTTTTTTTTTT      
-```
+![ZOORaT_logo.png](/assets/img/ZOORaT_logo.png)
 
 <h1 align="center"> ⟴ SOHO routers hijacking ⬲ </h1>
 
