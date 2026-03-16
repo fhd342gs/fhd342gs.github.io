@@ -63,7 +63,7 @@ copyright = "ioctl"
         weight = 3
       [[languages.en.menu.main]]
         identifier = "tools"
-        name = "Tools"
+        name = "Tools & Techniques"
         url = "/tools/"
         weight = 4
       [[languages.en.menu.main]]
