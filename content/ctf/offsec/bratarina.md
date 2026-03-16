@@ -2,6 +2,10 @@
 title: "PG: Bratarina"
 date: 2023-11-10
 draft: false
+os: "Linux"
+difficulty: "Easy"
+platform: "OffSec Proving Grounds"
+aliases: ["/posts/offsec/bratarina/"]
 tags:
   - offsec
   - proving-grounds

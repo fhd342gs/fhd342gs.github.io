@@ -2,6 +2,10 @@
 title: "HTB: Knife"
 date: 2023-06-15
 draft: false
+os: "Linux"
+difficulty: "Easy"
+platform: "HTB"
+aliases: ["/posts/htb/knife/"]
 tags:
   - htb
   - easy

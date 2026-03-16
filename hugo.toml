@@ -8,9 +8,9 @@ copyright = "ioctl"
   pagerSize = 10
 
 [params]
-  contentTypeName = "posts"
+  contentTypeName = "ctf"
   themeColor = "green"
-  showMenuItems = 3
+  showMenuItems = 5
   showLanguageSelector = false
   fullWidthTheme = false
   centerTheme = true
@@ -21,6 +21,10 @@ copyright = "ioctl"
 [params.twitter]
   creator = ""
   site = ""
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
 
 [languages]
   [languages.en]
@@ -43,17 +47,30 @@ copyright = "ioctl"
 
     [languages.en.menu]
       [[languages.en.menu.main]]
-        identifier = "htb"
-        name = "HTB"
-        url = "/tags/htb/"
+        identifier = "home"
+        name = "~"
+        url = "/"
+        weight = 1
       [[languages.en.menu.main]]
-        identifier = "offsec"
-        name = "OffSec"
-        url = "/tags/offsec/"
+        identifier = "ctf"
+        name = "CTF"
+        url = "/ctf/"
+        weight = 2
+      [[languages.en.menu.main]]
+        identifier = "research"
+        name = "Research"
+        url = "/research/"
+        weight = 3
+      [[languages.en.menu.main]]
+        identifier = "tools"
+        name = "Tools"
+        url = "/tools/"
+        weight = 4
       [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/about/"
+        weight = 5
 
 [markup]
   [markup.highlight]

@@ -2,11 +2,11 @@
 title: "HTB: {{ replace .File.ContentBaseName "-" " " | title }}"
 date: {{ .Date }}
 draft: true
+os: ""
+difficulty: ""
+platform: "HTB"
 tags:
   - htb
-  - # difficulty: easy / medium / hard / insane
-  - # os: linux / windows
-  - # techniques used, e.g. sqli, privesc-suid, port-forwarding
 categories:
   - walkthrough
 cover: ""

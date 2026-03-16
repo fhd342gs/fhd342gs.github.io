@@ -2,6 +2,10 @@
 title: "HTB: Busqueda"
 date: 2023-12-19
 draft: false
+os: "Linux"
+difficulty: "Easy"
+platform: "HTB"
+aliases: ["/posts/htb/busqueda/"]
 tags:
   - htb
   - easy

@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="breadcrumb">
+  <span class="prompt">~/ioctl/research $</span> ls -la
+</div>
+
+<h1>リサーチ // Research</h1>
+
+{{ if .Pages }}
+<div class="machine-list">
+  {{ range .Pages.ByDate.Reverse }}
+  <a href="{{ .Permalink }}" class="machine-entry">
+    <span class="machine-name">{{ .Title }}</span>
+    <span class="machine-date">{{ .Date.Format "2006-01-02" }}</span>
+  </a>
+  {{ end }}
+</div>
+{{ else }}
+<p style="opacity: 0.5;">
+  total 0<br>
+  drwxr-xr-x  2 root root 4096 Mar 16 00:00 .<br>
+  drwxr-xr-x  5 root root 4096 Mar 16 00:00 ..<br>
+  <br>
+  // まだ投稿はありません — stay tuned
+</p>
+{{ end }}
+{{ end }}

@@ -2,6 +2,10 @@
 title: "PG: Twiggy"
 date: 2024-02-09
 draft: false
+os: "Linux"
+difficulty: "Easy"
+platform: "OffSec Proving Grounds"
+aliases: ["/posts/offsec/twiggy/"]
 tags:
   - offsec
   - proving-grounds

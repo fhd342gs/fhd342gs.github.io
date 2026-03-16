@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="breadcrumb">
+  <span class="prompt">~/ioctl/ctf/offsec $</span> ls -la
+</div>
+
+<h1>OffSec Proving Grounds マシン</h1>
+
+<div class="machine-list">
+  {{ range .Pages.ByDate.Reverse }}
+  <a href="{{ .Permalink }}" class="machine-entry">
+    <span class="machine-name">{{ .Title }}</span>
+    <span class="machine-meta">
+      {{ with .Params.os }}{{ . }}{{ end }}
+      {{ with .Params.difficulty }}// {{ . }}{{ end }}
+    </span>
+    <span class="machine-date">{{ .Date.Format "2006-01-02" }}</span>
+  </a>
+  {{ else }}
+  <p style="opacity: 0.5;">No walkthroughs yet. Check back soon.</p>
+  {{ end }}
+</div>
+{{ end }}

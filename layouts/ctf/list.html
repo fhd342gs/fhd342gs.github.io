@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="breadcrumb">
+  <span class="prompt">~/ioctl/ctf $</span>
+</div>
+
+<h1>CTF プラットフォーム</h1>
+<p style="opacity: 0.6; margin-bottom: 2em;">Walkthroughs sorted by platform. Pick your target.</p>
+
+<div class="platform-grid">
+
+  <a href="/ctf/htb/" class="platform-card">
+    <div class="platform-icon">█▓▒░</div>
+    <div class="platform-info">
+      <h3>Hack The Box</h3>
+      <p class="platform-count">
+        {{ len (where .Site.RegularPages.ByDate.Reverse "Params.platform" "HTB") }} machines
+      </p>
+      <p class="platform-desc">Active Directory, web apps, Linux & Windows privesc</p>
+    </div>
+  </a>
+
+  <a href="/ctf/offsec/" class="platform-card">
+    <div class="platform-icon">▓▒░█</div>
+    <div class="platform-info">
+      <h3>OffSec Proving Grounds</h3>
+      <p class="platform-count">
+        {{ len (where .Site.RegularPages.ByDate.Reverse "Params.platform" "OffSec Proving Grounds") }} machines
+      </p>
+      <p class="platform-desc">OSCP-style boxes, practice labs</p>
+    </div>
+  </a>
+
+  <a href="/ctf/vulnhub/" class="platform-card disabled">
+    <div class="platform-icon">░░░░</div>
+    <div class="platform-info">
+      <h3>VulnHub</h3>
+      <p class="platform-count">Coming soon</p>
+      <p class="platform-desc">Downloadable vulnerable VMs</p>
+    </div>
+  </a>
+
+</div>
+{{ end }}

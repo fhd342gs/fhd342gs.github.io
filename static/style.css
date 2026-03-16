@@ -27,11 +27,7 @@ body {
   background-color: var(--matrix-bg) !important;
 }
 
-/* --- Falling katakana rain background ---
-   This creates a subtle Matrix rain effect using a repeating CSS animation
-   on a pseudo-element behind the main content. It should be SUBTLE —
-   very low opacity, not distracting, just visible enough to set the mood. */
-
+/* --- Falling katakana rain background --- */
 body::before {
   content: "アイオクトル ハック セキュリティ カーネル シェル ルート エクスプロイト バッファ オーバフロー ネットワーク プロトコル デバイス ドライバ メモリ プロセス";
   position: fixed;
@@ -57,8 +53,9 @@ body::before {
   100% { transform: translateY(0%); }
 }
 
-/* --- Logo: blinking underscore cursor --- */
-.logo__text::after {
+/* --- Logo: blinking underscore cursor ---
+   The Terminal theme renders logo text inside .logo div */
+.logo::after {
   content: "_";
   animation: cursor-blink 0.8s step-end infinite;
   color: var(--matrix-green);
@@ -76,12 +73,11 @@ h1, h2, h3 {
   text-shadow: 0 0 8px rgba(0, 255, 65, 0.15);
 }
 
-.logo__text {
+.logo {
   text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
 }
 
-/* --- Katakana decorators on section headings in posts ---
-   Adds subtle katakana characters before h2 headings */
+/* --- Katakana decorators on section headings in posts --- */
 .post-content h2::before {
   content: "» ";
   color: var(--matrix-green);
@@ -140,7 +136,7 @@ blockquote {
 
 /* --- Active menu item --- */
 .navigation-menu a.active {
-  color: var(--matrix-green);
+  color: var(--matrix-green-bright) !important;
   text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
   border-bottom: 2px solid var(--matrix-green);
   padding-bottom: 2px;
@@ -303,4 +299,218 @@ body::after {
 .post-reading-time {
   opacity: 0.6;
   font-size: 0.9em;
+}
+
+/* === Breadcrumb === */
+.breadcrumb {
+  margin-bottom: 1.5em;
+  font-size: 0.95em;
+}
+
+.breadcrumb .prompt {
+  color: var(--matrix-green);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+}
+
+/* === Home page terminal styling === */
+.home-terminal {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terminal-output {
+  margin-bottom: 1.5em;
+}
+
+.terminal-cmd {
+  margin-bottom: 0.3em;
+}
+
+.prompt {
+  color: var(--matrix-green);
+}
+
+.ls-output {
+  border: none !important;
+  border-left: none !important;
+  padding: 0.5em 0 0.5em 1em !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  line-height: 1.6;
+}
+
+.ls-output a.dir {
+  color: var(--matrix-green-bright);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ls-output a.dir:hover {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+.ls-output a.file {
+  color: var(--matrix-green);
+  text-decoration: none;
+}
+
+.ls-output a.file:hover {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+}
+
+.ls-output .dir {
+  color: var(--matrix-green-bright);
+  font-weight: 700;
+}
+
+.ls-comment {
+  color: var(--matrix-green);
+  opacity: 0.25;
+  font-style: normal;
+}
+
+.motd {
+  border: none !important;
+  border-left: none !important;
+  padding: 0 0 0 1em !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--matrix-green);
+  opacity: 0.8;
+}
+
+.recent-posts {
+  padding-left: 1em;
+}
+
+.find-result {
+  margin: 0.2em 0;
+  font-size: 0.9em;
+}
+
+.find-path {
+  color: var(--accent-alpha-70);
+}
+
+.find-result a {
+  color: var(--matrix-green);
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+.find-result a:hover {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+.find-date {
+  opacity: 0.4;
+  font-size: 0.85em;
+}
+
+.cursor-blink {
+  animation: cursor-blink 0.8s step-end infinite;
+  color: var(--matrix-green);
+}
+
+/* === CTF platform grid === */
+.platform-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  max-width: 600px;
+}
+
+.platform-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  padding: 1.2em 1.5em;
+  border: 1px solid var(--accent-alpha-20);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.platform-card:hover {
+  border-color: var(--matrix-green);
+  background: var(--accent-alpha-05);
+  box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+}
+
+.platform-card.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.platform-icon {
+  font-size: 1.5em;
+  color: var(--matrix-green);
+  flex-shrink: 0;
+  width: 60px;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+.platform-info h3 {
+  margin: 0;
+  font-size: 1.1em;
+  text-shadow: none;
+}
+
+.platform-count {
+  font-size: 0.85em;
+  color: var(--matrix-green);
+  margin: 0.2em 0;
+}
+
+.platform-desc {
+  font-size: 0.8em;
+  opacity: 0.5;
+  margin: 0;
+}
+
+/* === Machine list === */
+.machine-list {
+  max-width: 700px;
+}
+
+.machine-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7em 0;
+  border-bottom: 1px dashed var(--accent-alpha-20);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s ease;
+}
+
+.machine-entry:hover {
+  padding-left: 0.5em;
+  border-bottom-color: var(--matrix-green);
+}
+
+.machine-entry:hover .machine-name {
+  color: var(--matrix-green);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.machine-name {
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.machine-meta {
+  font-size: 0.8em;
+  opacity: 0.5;
+  text-transform: lowercase;
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 1em;
+}
+
+.machine-date {
+  font-size: 0.8em;
+  opacity: 0.3;
+  flex-shrink: 0;
 }

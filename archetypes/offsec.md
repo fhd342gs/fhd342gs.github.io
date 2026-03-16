@@ -2,12 +2,12 @@
 title: "PG: {{ replace .File.ContentBaseName "-" " " | title }}"
 date: {{ .Date }}
 draft: true
+os: ""
+difficulty: ""
+platform: "OffSec Proving Grounds"
 tags:
   - offsec
   - proving-grounds
-  - # difficulty: easy / intermediate / hard
-  - # os: linux / windows
-  - # techniques
 categories:
   - walkthrough
 cover: ""

@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="home-terminal">
+
+  <div class="terminal-output">
+    <p class="terminal-cmd"><span class="prompt">~/ioctl $</span> ls -la</p>
+    <pre class="ls-output">total 5
+drwxr-xr-x  6 root root 4096 Mar 16 00:00 <span class="dir">.</span>
+drwxr-xr-x  3 root root 4096 Mar 16 00:00 <span class="dir">..</span>
+drwxr-xr-x  4 root root 4096 Mar 16 00:00 <a href="/ctf/" class="dir">ctf/</a>         <span class="ls-comment"># キャプチャー・ザ・フラッグ</span>
+drwxr-xr-x  2 root root 4096 Mar 16 00:00 <a href="/research/" class="dir">research/</a>    <span class="ls-comment"># リサーチ</span>
+drwxr-xr-x  2 root root 4096 Mar 16 00:00 <a href="/tools/" class="dir">tools/</a>       <span class="ls-comment"># ツール</span>
+-rw-r--r--  1 root root  512 Mar 16 00:00 <a href="/about/" class="file">about</a>        <span class="ls-comment"># アバウト</span></pre>
+  </div>
+
+  <div class="terminal-output">
+    <p class="terminal-cmd"><span class="prompt">~/ioctl $</span> cat motd</p>
+    <pre class="motd">
+ _            _   _
+(_) ___   ___| |_| |
+| |/ _ \ / __| __| |
+| | (_) | (__| |_| |
+|_|\___/ \___|\__|_|  .lol
+
+HTB &amp; OffSec walkthroughs // security research // notes from the terminal
+    </pre>
+  </div>
+
+  <div class="terminal-output">
+    <p class="terminal-cmd"><span class="prompt">~/ioctl $</span> find ./ctf -name "*.md" -newer ./ctf | head -5 <span class="ls-comment"># 最新の投稿</span></p>
+    <div class="recent-posts">
+      {{ range first 5 (where .Site.RegularPages "Section" "ctf") }}
+      <p class="find-result">
+        <span class="find-path">./ctf/{{ with .CurrentSection }}{{ .File.ContentBaseName }}/{{ end }}</span><a href="{{ .Permalink }}">{{ .Title }}</a>
+        <span class="find-date">{{ .Date.Format "2006-01-02" }}</span>
+      </p>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="terminal-output">
+    <p class="terminal-cmd"><span class="prompt">~/ioctl $</span> <span class="cursor-blink">_</span></p>
+  </div>
+
+</div>
+{{ end }}
