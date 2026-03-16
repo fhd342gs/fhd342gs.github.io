@@ -1,0 +1,47 @@
+<div class="terminal-block">
+  <div class="terminal-header">
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <span class="terminal-title">{{ .Get "title" | default "端末" }}</span>
+  </div>
+  <div class="terminal-body">
+    <pre><code>{{ .Inner }}</code></pre>
+  </div>
+</div>
+<style>
+  .terminal-block {
+    margin: 1.5em 0;
+    border: 1px solid var(--accent-alpha-20);
+    overflow: hidden;
+  }
+  .terminal-header {
+    background: rgba(0, 255, 65, 0.05);
+    padding: 0.4em 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    border-bottom: 1px solid var(--accent-alpha-20);
+  }
+  .terminal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    background: var(--matrix-green);
+    opacity: 0.4;
+  }
+  .terminal-dot:first-child { opacity: 0.8; }
+  .terminal-title {
+    margin-left: 0.5em;
+    font-size: 0.8em;
+    opacity: 0.5;
+    letter-spacing: 0.05em;
+  }
+  .terminal-body pre {
+    margin: 0;
+    border: none;
+    border-left: none;
+    padding: 1em;
+  }
+</style>

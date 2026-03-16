@@ -1,0 +1,27 @@
+<details class="collapse-section">
+  <summary>▶ {{ .Get "title" }}</summary>
+  <div class="collapse-content">
+    {{ .Inner | markdownify }}
+  </div>
+</details>
+<style>
+  .collapse-section {
+    border: 1px dashed var(--accent-alpha-20);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    cursor: pointer;
+  }
+  .collapse-section[open] summary {
+    margin-bottom: 0.8em;
+    border-bottom: 1px dashed var(--accent-alpha-20);
+    padding-bottom: 0.5em;
+  }
+  .collapse-section summary {
+    font-weight: 700;
+    color: var(--accent);
+    outline: none;
+  }
+  .collapse-content {
+    padding-top: 0.5em;
+  }
+</style>

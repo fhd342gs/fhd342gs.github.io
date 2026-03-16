@@ -1,0 +1,306 @@
+/* ============================================
+   ioctl — Matrix / hacker theme overrides
+   ============================================ */
+
+/* --- Matrix green palette --- */
+:root {
+  --background: #0a0a0a;
+  --foreground: #e0e0e0;
+  --accent: #00ff41;
+  --matrix-green: #00ff41;
+  --matrix-green-bright: #39ff14;
+  --matrix-green-dim: #003b00;
+  --matrix-green-glow: 0 0 10px rgba(0, 255, 65, 0.3), 0 0 20px rgba(0, 255, 65, 0.1);
+  --matrix-bg: #0a0a0a;
+  --matrix-bg-lighter: #0f1a0f;
+  --accent-alpha-70: rgba(0, 255, 65, 0.7);
+  --accent-alpha-20: rgba(0, 255, 65, 0.2);
+  --accent-alpha-10: rgba(0, 255, 65, 0.1);
+  --accent-alpha-05: rgba(0, 255, 65, 0.05);
+}
+
+/* --- Font: JetBrains Mono --- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
+
+body {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+  background-color: var(--matrix-bg) !important;
+}
+
+/* --- Falling katakana rain background ---
+   This creates a subtle Matrix rain effect using a repeating CSS animation
+   on a pseudo-element behind the main content. It should be SUBTLE —
+   very low opacity, not distracting, just visible enough to set the mood. */
+
+body::before {
+  content: "アイオクトル ハック セキュリティ カーネル シェル ルート エクスプロイト バッファ オーバフロー ネットワーク プロトコル デバイス ドライバ メモリ プロセス";
+  position: fixed;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  font-size: 1.1em;
+  line-height: 1.8;
+  letter-spacing: 0.5em;
+  word-break: break-all;
+  color: var(--matrix-green);
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: -1;
+  animation: matrix-scroll 60s linear infinite;
+  writing-mode: vertical-rl;
+  overflow: hidden;
+}
+
+@keyframes matrix-scroll {
+  0% { transform: translateY(-25%); }
+  100% { transform: translateY(0%); }
+}
+
+/* --- Logo: blinking underscore cursor --- */
+.logo__text::after {
+  content: "_";
+  animation: cursor-blink 0.8s step-end infinite;
+  color: var(--matrix-green);
+  margin-left: 2px;
+  font-weight: 300;
+  text-shadow: var(--matrix-green-glow);
+}
+
+@keyframes cursor-blink {
+  50% { opacity: 0; }
+}
+
+/* --- Green text glow on headings --- */
+h1, h2, h3 {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.15);
+}
+
+.logo__text {
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+/* --- Katakana decorators on section headings in posts ---
+   Adds subtle katakana characters before h2 headings */
+.post-content h2::before {
+  content: "» ";
+  color: var(--matrix-green);
+  opacity: 0.5;
+}
+
+/* Small katakana watermark in the footer area */
+.footer::after {
+  content: " // イオクトル";
+  color: var(--matrix-green);
+  opacity: 0.4;
+  font-size: 0.85em;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.2);
+}
+
+/* --- Subtitle under logo --- */
+.site-subtitle {
+  color: var(--matrix-green);
+  font-size: 0.8em;
+  opacity: 0.5;
+  margin-top: 0.3em;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.2);
+}
+
+/* --- Code blocks: Matrix terminal style --- */
+pre {
+  border-left: 3px solid var(--matrix-green);
+  border-radius: 0;
+  padding: 1em;
+  background: var(--matrix-bg) !important;
+  box-shadow: inset 0 0 30px rgba(0, 255, 65, 0.02);
+}
+
+/* Inline code */
+code:not(pre > code) {
+  background: var(--accent-alpha-10);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+  color: var(--matrix-green-bright);
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  border-left: 3px solid var(--matrix-green);
+  background: var(--accent-alpha-05);
+  padding: 0.8em 1.2em;
+  margin: 1.5em 0;
+}
+
+/* --- Post list styling --- */
+.posts-list .post-title {
+  border-bottom: 1px dashed var(--accent-alpha-20);
+  padding-bottom: 0.5em;
+}
+
+/* --- Active menu item --- */
+.navigation-menu a.active {
+  color: var(--matrix-green);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+  border-bottom: 2px solid var(--matrix-green);
+  padding-bottom: 2px;
+}
+
+/* --- Links: green glow on hover --- */
+a:hover {
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+}
+
+/* --- Tag pills --- */
+.post-tags a {
+  border: 1px solid var(--accent-alpha-70);
+  border-radius: 0;
+  padding: 0.15em 0.5em;
+  font-size: 0.85em;
+  transition: all 0.2s ease;
+  text-transform: lowercase;
+}
+
+.post-tags a:hover {
+  background: var(--accent-alpha-20);
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+}
+
+/* --- Horizontal rules: scanline style --- */
+hr {
+  border: none;
+  border-top: 1px solid var(--accent-alpha-20);
+  margin: 2em 0;
+  position: relative;
+}
+
+hr::after {
+  content: "//";
+  position: absolute;
+  top: -0.7em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--matrix-bg);
+  padding: 0 0.5em;
+  color: var(--accent-alpha-20);
+  font-size: 0.8em;
+}
+
+/* --- Scrollbar: Matrix style (webkit) --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--matrix-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-alpha-20);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-alpha-70);
+  box-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
+}
+
+/* --- Selection highlight --- */
+::selection {
+  background: var(--matrix-green);
+  color: #000;
+}
+
+/* --- Tables --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+
+th, td {
+  border: 1px solid var(--accent-alpha-20);
+  padding: 0.5em 0.8em;
+  text-align: left;
+}
+
+th {
+  background: var(--accent-alpha-10);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+}
+
+/* --- Subtle CRT scanline effect (very faint) --- */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* --- Table of Contents --- */
+.toc {
+  border: 1px dashed var(--accent-alpha-20);
+  padding: 1em 1.5em;
+  margin: 1.5em 0;
+  max-width: 500px;
+}
+
+.toc h3 {
+  margin-top: 0;
+  color: var(--matrix-green);
+  font-size: 0.95em;
+}
+
+.toc h3::before {
+  content: "目次 ";
+  opacity: 0.4;
+  font-size: 0.9em;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 1em;
+}
+
+.toc li {
+  margin: 0.3em 0;
+}
+
+.toc li::before {
+  content: "├─ ";
+  color: var(--accent-alpha-20);
+}
+
+.toc li:last-child::before {
+  content: "└─ ";
+  color: var(--accent-alpha-20);
+}
+
+.toc a {
+  text-decoration: none;
+  border-bottom: 1px dashed var(--accent-alpha-20);
+}
+
+.toc a:hover {
+  border-bottom-color: var(--matrix-green);
+  text-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
+}
+
+/* --- Reading time --- */
+.post-reading-time {
+  opacity: 0.6;
+  font-size: 0.9em;
+}

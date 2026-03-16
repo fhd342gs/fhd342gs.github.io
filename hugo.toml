@@ -1,0 +1,69 @@
+baseURL = "https://ioctl.lol/"
+languageCode = "en-us"
+title = "ioctl"
+theme = "hugo-theme-terminal"
+copyright = "ioctl"
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  contentTypeName = "posts"
+  themeColor = "green"
+  showMenuItems = 3
+  showLanguageSelector = false
+  fullWidthTheme = false
+  centerTheme = true
+  autoCover = true
+  showLastUpdated = false
+  description = "HTB & OffSec walkthroughs | Security research & notes"
+
+[params.twitter]
+  creator = ""
+  site = ""
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    title = "ioctl"
+    subtitle = "ウォークスルー · セキュリティ · ノート"
+    owner = ""
+    keywords = ""
+    menuMore = "Show more"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    newerPosts = "Newer posts"
+    olderPosts = "Older posts"
+    missingContentMessage = "ENOENT: page not found..."
+    missingBackButtonLabel = "Back to home page"
+
+    [languages.en.params.logo]
+      logoText = "~/ioctl $"
+      logoHomeLink = "/"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "htb"
+        name = "HTB"
+        url = "/tags/htb/"
+      [[languages.en.menu.main]]
+        identifier = "offsec"
+        name = "OffSec"
+        url = "/tags/offsec/"
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about/"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    lineNos = true
+    noClasses = false
+    style = "monokai"
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]

@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="not-found" style="text-align: center; padding: 4em 1em;">
+  <p style="font-size: 0.9em; opacity: 0.3; margin-bottom: 2em;">
+    エラー // ページが見つかりません
+  </p>
+  <h1 style="font-size: 3.5em; color: var(--accent); text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);">
+    ENOENT
+  </h1>
+  <p style="font-size: 1.1em; margin: 1.5em 0;">
+    <code>ioctl(fd, GET_PAGE, NULL)</code> returned <code>-1</code>
+  </p>
+  <p style="opacity: 0.4; font-size: 0.9em;">errno: No such file or directory</p>
+  <p style="margin-top: 3em;">
+    <a href="/" style="border: 1px solid var(--accent); padding: 0.5em 1.5em; text-decoration: none;">
+      ← cd /home
+    </a>
+  </p>
+</div>
+{{ end }}

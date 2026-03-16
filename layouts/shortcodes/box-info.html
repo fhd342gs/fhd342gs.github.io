@@ -1,0 +1,20 @@
+<div class="box-info">
+  <table>
+    <tr><th colspan="2">ターゲット // {{ .Get "name" }}</th></tr>
+    <tr><td>Platform</td><td>{{ .Get "platform" | default "Hack The Box" }}</td></tr>
+    <tr><td>OS</td><td>{{ .Get "os" }}</td></tr>
+    <tr><td>Difficulty</td><td>{{ .Get "difficulty" }}</td></tr>
+    {{ with .Get "ip" }}<tr><td>IP</td><td><code>{{ . }}</code></td></tr>{{ end }}
+  </table>
+</div>
+<style>
+  .box-info table {
+    max-width: 400px;
+    margin: 1.5em 0;
+  }
+  .box-info th {
+    text-align: center;
+    font-size: 1.1em;
+    letter-spacing: 0.08em;
+  }
+</style>

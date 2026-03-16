@@ -1,0 +1,39 @@
+{{ $type := .Get "type" | default "info" }}
+{{ $labels := dict "info" "情報" "warning" "警告" "flag" "フラグ" "note" "ノート" }}
+{{ $label := index $labels $type | default "info" }}
+
+<div class="callout callout-{{ $type }}">
+  <span class="callout-label">[ {{ $label }} ]</span>
+  <div class="callout-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>
+<style>
+  .callout {
+    padding: 0.8em 1em;
+    margin: 1.5em 0;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-alpha-05);
+  }
+  .callout-label {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.4em;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+  .callout-warning {
+    border-left-color: #f5a623;
+  }
+  .callout-warning .callout-label {
+    color: #f5a623;
+  }
+  .callout-flag {
+    border-left-color: #e74c3c;
+  }
+  .callout-flag .callout-label {
+    color: #e74c3c;
+  }
+</style>
