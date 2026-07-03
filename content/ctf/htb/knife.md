@@ -20,7 +20,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -37,10 +37,6 @@ PORT   STATE SERVICE VERSION
 {{< /collapse >}}
 
 **OS**: Linux (Ubuntu, kernel 5.4.0-80-generic)
-
----
-
-## Enumeration
 
 ### Port 80 - Web App
 
@@ -94,9 +90,9 @@ sudo knife exec -E 'exec "/bin/bash"'
 
 {{< terminal title="root@knife" >}}
 root@knife:/home/james# cat user.txt
-ba62e576a2e7e468eb51b8bf13be1301
+[redacted]
 root@knife:/home/james# cat /root/root.txt
-8a29936c83b58483940c3765b3792ff9
+[redacted]
 {{< /terminal >}}
 
 ---

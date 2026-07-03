@@ -48,6 +48,12 @@ The version isn't advertised anywhere, so this is a "take the shot" box — assu
 
 Grav's Admin plugin is vulnerable to an unauthenticated RCE (CVE-2021-21425). The Metasploit module works, but on this box the callback shell dies within seconds — use the standalone PoC instead ([CsEnox/CVE-2021-21425](https://github.com/CsEnox/CVE-2021-21425)).
 
+The PoC addresses the target by its vhost name, so map `astronaut.offsec` to the box in `/etc/hosts` first:
+
+```bash
+echo '192.168.155.12  astronaut.offsec' | sudo tee -a /etc/hosts
+```
+
 Start a listener, then trigger the exploit with a base64-encoded bash reverse shell to survive quoting issues:
 
 ```bash
@@ -63,7 +69,7 @@ Shell lands as the low-priv web user.
 
 ### SUID php7.4 — GTFOBins
 
-OffSec is notoriously hostile to LinPEAS on these boxes, so read the output carefully instead of skimming it. Buried in the SUID scan is a non-standard entry:
+OffSec boxes drown the one useful line in a wall of LinPEAS output, so read it carefully instead of skimming. Buried in the SUID scan is a non-standard entry:
 
 ![SUID scan flagging /usr/bin/php7.4 as an unknown SUID binary](/images/astronaut/suid-php.png)
 

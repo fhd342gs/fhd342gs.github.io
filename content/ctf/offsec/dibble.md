@@ -122,17 +122,17 @@ su evil_root
 
 ## Proof
 
-```
+{{< terminal title="benjamin@dibble" >}}
 [benjamin@dibble ~]$ cat local.txt
 015d5d7d3fe1bf353fae57040662e347
-```
+{{< /terminal >}}
 
 ![Root shell — proof.txt and whoami confirming root](/images/dibble/root-flag.png)
 
-```
+{{< terminal title="root@dibble" >}}
 [root@dibble ~]# cat proof.txt
 ab7a16e74eb29575042025b474650ff8
-```
+{{< /terminal >}}
 
 ---
 

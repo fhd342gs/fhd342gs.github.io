@@ -96,7 +96,7 @@ Out of the cage. Fix the neutered `PATH` so normal binaries resolve again:
 export PATH=/bin:/usr/bin:/home/eleanor:/home
 ```
 
-Enumerating the account, `eleanor` is a member of the `docker` group — and Docker is installed.
+Enumerating the account shows `eleanor` is in the `docker` group — and Docker is installed.
 
 ---
 
@@ -107,7 +107,7 @@ Enumerating the account, `eleanor` is a member of the `docker` group — and Doc
 Membership in the `docker` group is effectively root: the Docker daemon runs as root, and any group member can ask it to run a container that bind-mounts the host filesystem. [GTFOBins' docker entry](https://gtfobins.github.io/gtfobins/docker/) is the classic play — mount the host's `/` into a throwaway container, `chroot` into it, and you're root on the host:
 
 ```bash
-# any local image works — reuse one that's already present
+# any local image works — reuse whatever docker images lists (here, redmine)
 docker ps
 docker images
 

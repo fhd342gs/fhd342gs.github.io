@@ -7,7 +7,6 @@ tags:
   - entra-id
   - rbac
   - pim
-  - powershell
   - bash
   - cloud-security
 categories:
@@ -94,7 +93,7 @@ This is what you get out of the box. One command, full picture:
 {{< collapse title="Full table output example" >}}
 ```
 ============================================================
-  AZURE ROLE DIGGER — Comprehensive Permission Discovery
+  AZURE ROLES DIGGER — Comprehensive Permission Discovery
 ============================================================
 
 [*] Target Object ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890

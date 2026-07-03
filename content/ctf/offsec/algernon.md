@@ -22,7 +22,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -38,10 +38,6 @@ categories:
 17001/tcp open  remoting      MS .NET Remoting services
 ```
 {{< /collapse >}}
-
----
-
-## Enumeration
 
 ### Port 21 - FTP
 
@@ -96,7 +92,7 @@ Not required. The SmarterMail RCE exploit gives us a **SYSTEM** shell immediatel
 ## Proof
 
 {{< terminal title="proof" >}}
-local.txt: N/A
+local.txt: N/A (direct SYSTEM foothold, no user stage)
 proof.txt: [redacted]
 {{< /terminal >}}
 

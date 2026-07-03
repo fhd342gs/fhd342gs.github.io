@@ -44,7 +44,7 @@ A Debian box with a broad surface. FTP has no anonymous login, MySQL rejects rem
 
 ### Port 445 - SMB
 
-The `zino` share is readable over a null session. Spidering it with CrackMapExec pulls down a folder of application logs (`access.log`, `auth.log`, `misc.log`, `local.txt`). `misc.log` is the prize — it records the Booked application being provisioned, leaking the admin credentials in cleartext:
+The `zino` share is readable over a null session. Spidering it with CrackMapExec pulls down a folder of application logs (`access.log`, `auth.log`, `misc.log`) alongside `local.txt` — the user flag, handed over from the share before we even have a shell. `misc.log` is the prize — it records the Booked application being provisioned, leaking the admin credentials in cleartext:
 
 ![CrackMapExec spidering the zino share and misc.log leaking admin:adminadmin](/images/zino/smb-enum.png)
 
@@ -148,7 +148,7 @@ Root.
 
 ## Proof
 
-User flag from `/home/peter/local.txt`:
+The same `local.txt` we pulled from the SMB share earlier, now confirmed on-box at `/home/peter/local.txt`:
 
 ![User flag — cat /home/peter/local.txt](/images/zino/user-flag.png)
 

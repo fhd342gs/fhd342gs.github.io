@@ -22,7 +22,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -39,10 +39,6 @@ PORT   STATE SERVICE VERSION
 {{< /collapse >}}
 
 Requests to the IP get redirected to `searcher.htb` -- add it to `/etc/hosts`.
-
----
-
-## Enumeration
 
 ### Port 80 - Web App
 
@@ -161,7 +157,7 @@ Root shell received.
 |---------------|-----------------------|-------------|
 | cody          | jh1usoih2bkjaspwe92   | Gitea       |
 | svc           | jh1usoih2bkjaspwe92   | SSH         |
-| gitea (db)    | yuiu1hoiu4i5ho1uh     | MySQL       |
+| gitea (db)    | yuiu1hoiu4i5ho1uh     | Gitea DB    |
 | Administrator | yuiu1hoiu4i5ho1uh     | Gitea admin |
 
 ---

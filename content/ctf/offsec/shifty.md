@@ -42,7 +42,7 @@ Four ports, but two of them talk to each other. Port 5000 is a Flask app (Werkze
 
 ### Port 5000 - Flask App
 
-The app has a login form. Logging in and out while watching memcached shows session keys popping in and out of the cache:
+The app has a login form, and the stock `admin:admin` gets you in. Logging in and out while watching memcached shows session keys popping in and out of the cache:
 
 ```
 session:2ddbaeff-f2ff-4256-8f7a-d516c346cd67

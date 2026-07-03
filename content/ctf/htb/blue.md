@@ -20,12 +20,6 @@ categories:
 
 ---
 
-## Recon
-
-Nothing special needed here -- straight to enumeration.
-
----
-
 ## Enumeration
 
 ### Nmap

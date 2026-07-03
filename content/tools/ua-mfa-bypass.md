@@ -1,5 +1,5 @@
 ---
-title: "UA_MFA_bypass"
+title: "User-Agent MFA Bypass"
 date: 2026-03-16
 draft: false
 tags:
@@ -26,7 +26,7 @@ So they add exclusions. Lots of exclusions:
 - IoT devices, printers, healthcare monitors
 - Gaming consoles (yes, a PlayStation can authenticate to Entra ID)
 
-Here's the thing — when you hit the ROPC (Resource Owner Password Credential) flow, you authenticate with just username + password. No browser, no redirect, no MFA prompt. And the only thing telling Azure what "device" is connecting is the **User-Agent header**.
+Here's the thing — when you hit the ROPC (Resource Owner Password Credentials) flow, you authenticate with just username + password. No browser, no redirect, no MFA prompt. And the only thing telling Azure what "device" is connecting is the **User-Agent header**.
 
 Spoof a Teams Room User-Agent. Hit ROPC. Skip MFA entirely.
 

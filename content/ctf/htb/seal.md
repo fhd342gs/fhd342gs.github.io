@@ -91,7 +91,6 @@ The target user is `luis`. Poking around reveals an Ansible playbook at `/opt/ba
     archive:
       path: /opt/backups/files/
       dest: "/opt/backups/archives/backup-{{ansible_date_time.date}}-{{ansible_date_time.time}}.gz"
-  - name: Clean
 ```
 
 Key detail: `copy_links=yes` means the synchronize task follows symlinks. And we have write access to the `uploads` directory within the dashboard path.
@@ -143,6 +142,7 @@ sudo /usr/bin/ansible-playbook pwn.yml
 ## Proof
 
 {{< terminal title="root@seal" >}}
+# root via the SUID bash from sudo ansible-playbook (./bash -p, see above); no whoami/id output captured
 user.txt: [redacted]
 root.txt: [redacted]
 {{< /terminal >}}

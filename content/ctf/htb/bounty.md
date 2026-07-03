@@ -18,7 +18,7 @@ categories:
   - walkthrough
 ---
 
-{{< box-info name="Bounty" os="Windows" difficulty="Easy" ip="10.129.X.X" platform="HTB" >}}
+{{< box-info name="Bounty" os="Windows" difficulty="Easy" ip="10.129.x.x" platform="HTB" >}}
 
 ---
 

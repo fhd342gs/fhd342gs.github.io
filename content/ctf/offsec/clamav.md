@@ -23,7 +23,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -52,9 +52,7 @@ PORT     STATE         SERVICE      VERSION
 Don't forget to enumerate UDP. This box has **SNMP v1** on UDP 161 which reveals critical information.
 {{< /callout >}}
 
----
-
-## Enumeration
+Ports 199 (smux -- the SNMP multiplexer, tied to the SNMP service on UDP 161) and 60000 (a second OpenSSH listener) are open but weren't part of the path.
 
 ### Port 25 - SMTP (Sendmail)
 

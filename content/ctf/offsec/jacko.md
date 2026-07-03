@@ -85,7 +85,7 @@ wrapper.ntservice.account=.\tony
 wrapper.ntservice.password=BeyondLakeBarber399
 ```
 
-Creds `tony : BeyondLakeBarber399`. They validate over SMB (crackmapexec confirms them), but `tony` is a low-privileged local user with nothing interesting to reach that way — the value is a stable, interactive shell.
+Creds `tony : BeyondLakeBarber399`. They validate over SMB (crackmapexec confirms them), but `tony` is a low-privileged local user with nothing interesting to reach that way — the real payoff is a stable, interactive shell.
 
 ### Upgrading to a Real Shell
 
@@ -126,10 +126,10 @@ PrintSpoofer64.exe -i -c cmd
 
 ## Proof
 
-```
+{{< terminal title="root@jacko" >}}
 C:\Windows\system32> whoami
 nt authority\system
-```
+{{< /terminal >}}
 
 ![SYSTEM shell and the contents of proof.txt](/images/jacko/proof.png)
 

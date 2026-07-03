@@ -74,7 +74,7 @@ squid22's [PostgreSQL_RCE](https://github.com/squid22/PostgreSQL_RCE) PoC automa
 
 ### SUID find - GTFOBins
 
-The box runs a strict egress firewall — only the already-open ports are usable for a callback or exfil, so I kept it to manual enumeration instead of dropping LinPEAS over FTP. A SUID sweep turns up `find` carrying the SUID bit. That is an instant [GTFOBins](https://gtfobins.github.io/gtfobins/find/#suid) win — `find` can exec a shell, and `-p` preserves the elevated privileges:
+The box runs a strict egress firewall — only the already-open ports are usable for a callback or exfil, so we kept it to manual enumeration instead of dropping LinPEAS over FTP. A SUID sweep turns up `find` carrying the SUID bit. That is an instant [GTFOBins](https://gtfobins.github.io/gtfobins/find/#suid) win — `find` can exec a shell, and `-p` preserves the elevated privileges:
 
 ```bash
 find . -exec /bin/sh -p \; -quit

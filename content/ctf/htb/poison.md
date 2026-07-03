@@ -71,7 +71,7 @@ charix:*:1001:1001:charix:/home/charix:/bin/csh
 
 ### Encoded Password
 
-Reading `pwdbackup.txt` through the LFI reveals a base64 blob with a note: "This password is secure, it's encoded atleast 13 times.. what could go wrong really.."
+Reading `pwdbackup.txt` through the LFI reveals a base64 blob with a note: "This password is secure, it's encoded at least 13 times.. what could go wrong really.."
 
 Decode it 13 times (a simple loop in any language will do) and get the password: `Charix!2#4%6&8(0`.
 
@@ -106,6 +106,7 @@ The `secret` file isn't a password -- it's a VNC authentication key file. The VN
 ## Proof
 
 {{< terminal title="root@poison" >}}
+# root obtained via the root-owned VNC session (localhost:5901); no whoami/id output captured
 user.txt: [redacted]
 root.txt: [redacted]
 {{< /terminal >}}

@@ -24,7 +24,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -42,10 +42,6 @@ PORT      STATE SERVICE
 44091/tcp open  unknown
 ```
 {{< /collapse >}}
-
----
-
-## Enumeration
 
 ### Port 8081 / 8080 - Exhibitor for ZooKeeper
 
@@ -78,7 +74,7 @@ Got a shell as a low-privilege user.
 
 Checking `sudo -l` reveals we can run `gcore` without a password. `gcore` creates memory dumps of running processes.
 
-Running `linpeas.sh` pointed toward credential extraction from process memory ([HackTricks reference](https://book.hacktricks.xyz/linux-hardening/privilege-escalation#process-memory)).
+Running `linpeas.sh` pointed toward credential extraction from process memory ([HackTricks reference](https://book.hacktricks.wiki/linux-hardening/privilege-escalation#process-memory)).
 
 Found a password-related cron job process. Dumped its memory:
 
@@ -94,7 +90,7 @@ Searched the dump for credentials:
 strings core.493 | grep -i password -A5 -B5
 ```
 
-![Password found in memory dump](/images/pelican/proof.png)
+![Password found in memory dump](/images/pelican/password-dump.png)
 
 Found root credentials: `root:ClogKingpinInning731`
 

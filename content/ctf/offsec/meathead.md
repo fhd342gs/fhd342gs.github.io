@@ -43,7 +43,7 @@ PORT     STATE SERVICE       VERSION
 ```
 {{< /collapse >}}
 
-Windows Server 2019 box. The interesting detail is the two services parked on non-standard ports: FTP on `1221` and MSSQL on `1435`. IIS on 80 serves nothing useful, so the FTP is the way in.
+Windows Server 2019 box — the `445` fingerprint reads *2008 R2 - 2012*, but that SMB banner is unreliable; `systeminfo` from the shell later confirms Server 2019. The interesting detail is the two services parked on non-standard ports: FTP on `1221` and MSSQL on `1435`. IIS on 80 serves nothing useful, so the FTP is the way in.
 
 ### Port 1221 - FTP
 
@@ -84,7 +84,7 @@ sa:EjectFrailtyThorn425
 `sqlcmd` and CrackMapExec both choke here, so reach for Impacket against the non-standard MSSQL port:
 
 ```bash
-mssqlclient.py meathead/sa:EjectFrailtyThorn425@192.168.206.70 -p 1435
+mssqlclient.py meathead/sa:EjectFrailtyThorn425@192.168.206.70 -port 1435
 ```
 
 Logged in as `sa`, the database itself is empty — but `sa` is all you need. Enable `xp_cmdshell` from the client and you have command execution on the host:
@@ -96,7 +96,7 @@ SQL> xp_cmdshell whoami
 
 ### Reverse shell
 
-Nishang gets flagged and blocked by Defender on this box (`This script contains malicious content and has been blocked...`), so skip it and use a plain PowerShell TCP reverse shell instead. Stand up a listener, then have `xp_cmdshell` fetch and run the script in memory. The shell lands as the MSSQL service account:
+Nishang's `Invoke-PowerShellTcp.ps1` trips Defender's AMSI signature on this box (`This script contains malicious content and has been blocked...`) — it's the well-known script that's flagged, not PowerShell itself, so swap it for a plain, unsignatured PowerShell TCP reverse shell. Stand up a listener, then have `xp_cmdshell` fetch and run the script in memory. The shell lands as the MSSQL service account:
 
 ```
 nt service\mssql$sqlexpress

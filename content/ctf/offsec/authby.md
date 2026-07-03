@@ -42,7 +42,7 @@ Windows Server 2008 box. An ancient `zFTPServer` on 21, an HTTP app on the non-s
 
 ### Port 21 - FTP
 
-Anonymous login is allowed, but the real find is that `admin:admin` also works. That admin account is scoped straight to the web server's document root — three files, and the directory is **writable**:
+Anonymous login is allowed, but the real find is that `admin:admin` also works. That admin account is scoped straight to the web server's document root. The three existing files list as read-only, but the account can still drop **new** files into the directory — which is exactly what matters later:
 
 ```
 ftp> dir
@@ -51,7 +51,7 @@ ftp> dir
 -r--r--r--   1 root  root  161 Nov 08  2011 .htaccess
 ```
 
-Pull `.htpasswd` — it holds the hashed credential that gates port 242. Crack it:
+Pull `.htpasswd` (save it locally as `htpasswd.hash`) — it holds the hashed credential that gates port 242. Crack it:
 
 ```bash
 john --wordlist=/usr/share/wordlists/rockyou.txt htpasswd.hash

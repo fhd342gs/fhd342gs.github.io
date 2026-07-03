@@ -18,11 +18,22 @@ categories:
   - walkthrough
 ---
 
-{{< box-info name="Internal" os="Windows" difficulty="Easy" ip="192.168.X.X" platform="OffSec Proving Grounds" >}}
+{{< box-info name="Internal" os="Windows" difficulty="Easy" ip="192.168.x.x" platform="OffSec Proving Grounds" >}}
 
 ---
 
 ## Enumeration
+
+### Nmap
+
+The exposed surface is minimal — SMB is the only port in play:
+
+{{< collapse title="Nmap output" >}}
+```
+PORT    STATE SERVICE      VERSION
+445/tcp open  microsoft-ds
+```
+{{< /collapse >}}
 
 An old Windows host exposing SMB. Post-exploitation `sysinfo` confirms the target: **Windows Server 2008 (6.0 Build 6001, SP1), x86, workgroup member.** That 32-bit architecture matters — it kills one of the two rabbit holes below.
 

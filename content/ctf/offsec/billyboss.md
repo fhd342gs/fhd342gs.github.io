@@ -26,6 +26,18 @@ categories:
 
 ## Enumeration
 
+### Nmap
+
+The two ports that matter — a Nexus web service and SMB:
+
+{{< collapse title="Nmap output" >}}
+```
+PORT     STATE SERVICE       VERSION
+445/tcp  open  microsoft-ds
+8081/tcp open  http          Sonatype Nexus Repository Manager OSS 3.21.0-05
+```
+{{< /collapse >}}
+
 A Windows host with a web service on port **8081** — Sonatype **Nexus Repository Manager OSS 3.21.0-05**. SMB (445) is also exposed, which becomes relevant for privilege escalation later.
 
 Nexus ships with a login form, so this is a two-part web attack: get in, then abuse the version.
